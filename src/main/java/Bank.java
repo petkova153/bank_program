@@ -17,12 +17,18 @@ public class Bank {
         user.setAccountNumber(UUID.randomUUID());
         user.setAccountBalance(Double.parseDouble(this.getInfo("Opening balance")));
         user.setOpeningDate(new Date());
-        user.setMainCurrency(this.getInfo("Enter the main currency for your account"));
+        user.setCurrency(Currency.valueOf(this.getInfo("Enter the main currency for your account").toUpperCase()));
         return user;
     }
 
     public Double showAccountBalance(){
         return collectUserInfo().getAccountBalance();
+    }
+
+    public Double creditAccount(){
+        Double accountBalance = collectUserInfo().getAccountBalance();
+        Double result = accountBalance - Double.parseDouble(this.getInfo("Please enter amount to credit with."));
+        return result;
     }
     public String getInfo(String message){
         System.out.println(message);
