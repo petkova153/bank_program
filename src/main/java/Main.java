@@ -6,9 +6,9 @@ public class Main {
     private static Bank bankService = new Bank();
 
     public static void main(String[] args) {
-        boolean wouldLikeToContinue = true;
+        String wouldLikeToContinue = "Y";
 
-        while (wouldLikeToContinue) {
+        while (wouldLikeToContinue == "Y") {
             String userChoice = bankService.getInfo("""
                     Welcome to your Bank menu
                     please choose an option
@@ -33,7 +33,7 @@ public class Main {
                     bankService.debitAccount();
                     break;
                 case "5":
-                    wouldLikeToContinue = Boolean.parseBoolean(bankService.getInfo("Would you like to continue? (true/false)"));
+                    wouldLikeToContinue = bankService.getInfo("Would you like to continue? (Y/N)").toUpperCase();
                     break;
                 default:
                     System.out.println("Please choose an option");
