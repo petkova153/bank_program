@@ -12,7 +12,7 @@ public class Bank {
     private  User collectUserInfo(){
         User user = new User();
         user.setName(this.getInfo("Please write your name"));
-        user.setAge(Integer.getInteger(this.getInfo("Please specify your age")));
+        user.setAge(Integer.parseUnsignedInt(this.getInfo("Please specify your age")));
         user.setGender(Gender.valueOf(this.getInfo("Please specify your gender male/female/unidentified").toUpperCase()));
         user.setAccountNumber(UUID.randomUUID());
         user.setAccountBalance(Double.parseDouble(this.getInfo("Opening balance")));
@@ -21,14 +21,36 @@ public class Bank {
         return user;
     }
 
-    public Double showAccountBalance(){
-        return collectUserInfo().getAccountBalance();
+    public void showAccountBalance(){
+        for (User user: userList){
+            String name = this.getInfo("Please enter your name");
+            if (user.getName().equals(name)){
+                System.out.println("Your account balance is : " + user.getAccountBalance());
+                break;
+            }
+        }
     }
 
-    public Double creditAccount(){
-        Double accountBalance = collectUserInfo().getAccountBalance();
-        Double result = accountBalance - Double.parseDouble(this.getInfo("Please enter amount to credit with."));
-        return result;
+    public void creditAccount(){
+        for (User user: userList){
+            String name = this.getInfo("Please enter your name");
+            if (user.getName().equals(name)){
+                user.setAccountBalance(user.getAccountBalance() +
+                        Double.parseDouble(this.getInfo("Please enter amount to credit with.")));
+                System.out.println("Your new balance is: " + user.getAccountBalance());
+            }
+        }
+    }
+
+    public void debitAccount(){
+        for (User user: userList){
+            String name = this.getInfo("Please enter your name");
+            if (user.getName().equals(name)){
+                user.setAccountBalance(user.getAccountBalance() -
+                        Double.parseDouble(this.getInfo("Please enter amount to credit with.")));
+                System.out.println("Your new balance is: " + user.getAccountBalance());
+            }
+        }
     }
     public String getInfo(String message){
         System.out.println(message);

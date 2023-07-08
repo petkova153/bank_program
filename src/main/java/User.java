@@ -4,16 +4,16 @@ import java.util.UUID;
 
 public class User {
     private String name;
-    private int age;
+    private Integer age;
     private Gender gender;
     private UUID accountNumber;
-    private double accountBalance = 0.00d;
+    private Double accountBalance = 0.00d;
     private Date openingDate = new Date();
     private Currency currency;
 
     public User(){}
 
-    public User(String name, int age, Gender gender, UUID accountNumber, double accountBalance, Date openingDate, Currency currency) {
+    public User(String name, Integer age, Gender gender, UUID accountNumber, Double accountBalance, Date openingDate, Currency currency) {
         this.name = name;
         this.age = age;
         this.gender = gender;
@@ -44,7 +44,7 @@ public class User {
         this.name = name;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
@@ -68,7 +68,7 @@ public class User {
         this.accountNumber = accountNumber;
     }
 
-    public double getAccountBalance() {
+    public Double getAccountBalance() {
         return accountBalance;
     }
 
