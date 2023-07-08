@@ -1,14 +1,12 @@
-import java.util.Scanner;
 
 public class Main {
-    private static Scanner scanner = new Scanner(System.in);
     //composition is bringing in multiple classes in 1 class managing all of them
-    private static Bank bankService = new Bank();
+    final private static Bank bankService = new Bank();
 
     public static void main(String[] args) {
         String wouldLikeToContinue = "Y";
 
-        while (wouldLikeToContinue == "Y") {
+        while (wouldLikeToContinue.equals("Y")) {
             String userChoice = bankService.getInfo("""
                     Welcome to your Bank menu
                     please choose an option
